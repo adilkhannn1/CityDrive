@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: cityDrive
+  datasource:
+    url: jdbc:postgresql://localhost:5433/citydrivedb
+    username: postgres
+    password: Atestat_1
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+server:
+  port: 8081

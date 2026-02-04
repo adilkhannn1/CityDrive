@@ -16,16 +16,9 @@ import java.util.List;
 public class RoadIssueController {
 
     private final RoadIssueService roadIssueService;
-
     public RoadIssueController(RoadIssueService roadIssueService){
         this.roadIssueService = roadIssueService;
     }
-
-
-
-
-
-
 
     @PutMapping("/{id}")
     public ResponseEntity<RoadIssueResponse> updateRoadIssue(@PathVariable Long id, @RequestBody RoadIssueRequest updatedIssues){
@@ -33,6 +26,11 @@ public class RoadIssueController {
         return ResponseEntity.ok(roadIssue);
     }
 
+    @PostMapping
+    public ResponseEntity<RoadIssueResponse> createRoadIssue(@RequestBody RoadIssueRequest roadIssueRequest){
+           var roadIssue = roadIssueService.createRoadIssue(roadIssueRequest);
+           return ResponseEntity.ok(roadIssue);
+    }
 
 }
 

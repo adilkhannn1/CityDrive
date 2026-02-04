@@ -15,7 +15,7 @@ public class RoadIssueMapper {
     public RoadIssueResponse toRoadIssue(RoadIssueEntity roadIssueEntity){
         return new RoadIssueResponse(
                 roadIssueEntity.getId(),
-                roadIssueEntity.getPhotoPath(),
+                roadIssueEntity.getFile(),
                 roadIssueEntity.getTitle(),
                 roadIssueEntity.getDescription(),
                 roadIssueEntity.getStatus(),
@@ -27,7 +27,7 @@ public class RoadIssueMapper {
 
     public RoadIssueEntity toEntity(RoadIssueRequest roadIssueRequest){
         return new RoadIssueEntity(
-                roadIssueRequest.photoPath(),
+                roadIssueRequest.file(),
                 roadIssueRequest.title(),
                 roadIssueRequest.description(),
                 roadIssueRequest.latitude(),
@@ -38,7 +38,7 @@ public class RoadIssueMapper {
     public List<RoadIssueResponse> toRoadIssueList(List<RoadIssueEntity> entities){
         return entities.stream().map(entity -> new RoadIssueResponse(
                 entity.getId(),
-                entity.getPhotoPath(),
+                entity.getFile(),
                 entity.getTitle(),
                 entity.getDescription(),
                 entity.getStatus(),

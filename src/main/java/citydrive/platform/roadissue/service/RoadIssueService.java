@@ -8,7 +8,9 @@ import citydrive.platform.roadissue.dto.response.RoadIssueResponse;
 import citydrive.platform.roadissue.entity.RoadIssueEntity;
 import citydrive.platform.roadissue.mapper.RoadIssueMapper;
 import citydrive.platform.roadissue.repository.RoadIssueRepository;
+import citydrive.platform.security.service.CurrentUserService;
 import citydrive.platform.user.repository.UserRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -17,19 +19,17 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class RoadIssueService {
     private final RoadIssueRepository roadIssueRepository;
     private final RoadIssueMapper roadIssueMapper;
     private final UserRepository userRepository;
+    private final CurrentUserService currentUserService;
 
-    public RoadIssueService(RoadIssueRepository roadIssueRepository, RoadIssueMapper roadIssueMapper, UserRepository userRepository){
-        this.roadIssueRepository = roadIssueRepository;
-        this.roadIssueMapper = roadIssueMapper;
-        this.userRepository = userRepository;
-    }
 
-    public RoadIssueResponse createRoadIssue(Long id, RoadIssueRequest roadIssueRequest){
-        var user = userRepository.findById(id).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found by this id"));
+    public RoadIssueResponse createRoadIssue(RoadIssueRequest roadIssueRequest){
+        String email = currentUserService.getCurrentUserEmail();
+        var user = userRepository.findByEmail(email).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found by this id"));
         var toEntity = roadIssueMapper.toEntity(roadIssueRequest);
         toEntity.setCreator(user);
         toEntity.setCreatedAt(LocalDateTime.now());
@@ -45,7 +45,7 @@ public class RoadIssueService {
 
     public RoadIssueResponse updateRoadIssue(Long id, RoadIssueRequest updatedIssue){
         var roadEntity = roadIssueRepository.findById(id).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "RoadIssue not found by this id!"));
-        roadEntity.setPhotoPath(updatedIssue.photoPath());
+        roadEntity.setFile(updatedIssue.file());
         roadEntity.setDescription(updatedIssue.description());
         roadEntity.setLatitude(updatedIssue.latitude());
         roadEntity.setLongitude(updatedIssue.longitude());

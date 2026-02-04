@@ -9,7 +9,7 @@ public record UserResponse(
         Long id,
         String fullName,
         Gender gender,
-        String phoneNumber,
+        String email,
         City city,
         LocalDate birthDate
 ) {

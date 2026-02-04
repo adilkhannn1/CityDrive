@@ -7,17 +7,18 @@ import jakarta.validation.constraints.*;
 import java.time.LocalDate;
 
 public record UserRequest(
+
         @NotBlank
         @Size(min = 4, max = 30)
         @Pattern(regexp = "^[A-Za-zА-Яа-яёЁ ]+$")
         String fullName,
 
-        @NotNull(message = "Language is required")
+        @NotNull(message = "Gender is required")
         Gender gender,
 
-        @NotBlank(message = "Phone number cannot be empty")
-        @Pattern(regexp = "^\\+[1-9]\\d{7,14}$")
-        String phoneNumber,
+        @NotBlank(message = "Email cannot be empty")
+        @Email
+        String email,
 
         @NotNull(message = "Language is required")
         City city,
@@ -30,6 +31,9 @@ public record UserRequest(
         @Size(min = 6, max = 20, message = "Password must be between 6 and 20 characters")
         @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-zA-Z]).*$")
         String password
+
 ) {
+
+
 
 }

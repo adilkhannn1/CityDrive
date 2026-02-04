@@ -1,6 +1,5 @@
 package citydrive.platform.contractor.entity;
 
-import citydrive.platform.roadissue.entity.RoadIssueEntity;
 import citydrive.platform.user.enums.City;
 import citydrive.platform.user.enums.Gender;
 import citydrive.platform.user.enums.Language;
@@ -8,8 +7,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
-import java.util.List;
-
 
 
 @Entity
@@ -41,13 +38,9 @@ public class ContractorEntity {
 
     private String urlCompanyRegister;
 
-    private String urlPartfolioCompany;
+    private String urlPortfolioCompany;
 
     private Language language;
-
-//    @NotBlank(message = "Phone number cannot be empty")
-//    @Pattern(regexp = "^\\+[1-9]\\d{7,14}$")
-//    private String phoneNumber;
 
 
     private String avatarUrl;
@@ -77,7 +70,6 @@ public class ContractorEntity {
     ){
         this.fullName= fullName;
         this.gender = gender;
-        this.phoneNumber = phoneNumber;
         this.city = city;
         this.birthDate = birthDate;
         this.password = password;
@@ -94,9 +86,6 @@ public class ContractorEntity {
         return gender;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
 
     public String getEmail() {
         return email;
@@ -142,8 +131,8 @@ public class ContractorEntity {
         return urlCompanyRegister;
     }
 
-    public String getUrlPartfolioCompany() {
-        return urlPartfolioCompany;
+    public String getUrlPortfolioCompany() {
+        return urlPortfolioCompany;
     }
 
     //Setters
@@ -155,9 +144,6 @@ public class ContractorEntity {
         this.gender = gender;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
 
     public void setEmail(String email) {
         this.email = email;
@@ -200,8 +186,8 @@ public class ContractorEntity {
         this.urlCompanyRegister = urlCompanyRegister;
     }
 
-    public void setUrlPartfolioCompany(String urlPartfolioCompany) {
-        this.urlPartfolioCompany = urlPartfolioCompany;
+    public void setUrlPortfolioCompany(String urlPartfolioCompany) {
+        this.urlPortfolioCompany = urlPartfolioCompany;
     }
 }
 

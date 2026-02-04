@@ -7,8 +7,10 @@ import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
 
+
 public record UserProfileRequest(
-         @NotBlank
+
+        @NotBlank
          @Size(min = 4, max = 30)
          @Pattern(regexp = "^[A-Za-zА-Яа-яёЁ ]+$")
          String fullName,
@@ -28,6 +30,7 @@ public record UserProfileRequest(
 
          @NotNull(message = "Language is required")
          Language language
+
 ) {
 
 

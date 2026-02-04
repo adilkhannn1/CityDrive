@@ -24,9 +24,9 @@ public class UserRoadIssueController {
     }
 
 
-    @PostMapping("/{id}")
-    public ResponseEntity<RoadIssueResponse> createRoadIssue(@PathVariable Long id, @RequestBody @Valid RoadIssueRequest roadIssueRequest){
-        var roadIssue = roadIssueService.createRoadIssue(id, roadIssueRequest);
+    @PostMapping()
+    public ResponseEntity<RoadIssueResponse> createRoadIssue(@RequestBody @Valid RoadIssueRequest roadIssueRequest){
+        var roadIssue = roadIssueService.createRoadIssue(roadIssueRequest);
         return ResponseEntity.ok(roadIssue);
     }
 

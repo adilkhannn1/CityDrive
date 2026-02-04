@@ -1,10 +1,13 @@
 package citydrive.platform.news.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
+
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "news")
+@Data
 public class NewsEntity {
 
     @Id
@@ -26,19 +29,6 @@ public class NewsEntity {
     public NewsEntity() {
 
     }
-
-    public Long getId() { return id; }
-
-    public String getTitle() { return title; }
-    public String getDescription() { return description; }
-    public String getPhotoPath() { return photoPath; }
-    public LocalDateTime getCreatedAt() { return createdAt; }
-
-    public void setTitle(String title) { this.title = title; }
-    public void setDescription(String description) { this.description = description; }
-    public void setPhotoPath(String photoPath) { this.photoPath = photoPath; }
-    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
-
 
 }
 

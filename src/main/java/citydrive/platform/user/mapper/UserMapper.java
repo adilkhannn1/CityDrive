@@ -15,7 +15,7 @@ public class UserMapper {
         return new UserRequest(
                 userEntity.getFullName(),
                 userEntity.getGender(),
-                userEntity.getPhoneNumber(),
+                userEntity.getEmail(),
                 userEntity.getCity(),
                 userEntity.getBirthDate(),
                 userEntity.getPassword()
@@ -27,20 +27,20 @@ public class UserMapper {
                 userEntity.getId(),
                 userEntity.getFullName(),
                 userEntity.getGender(),
-                userEntity.getPhoneNumber(),
+                userEntity.getEmail(),
                 userEntity.getCity(),
                 userEntity.getBirthDate()
         );
     }
 
-    public UserEntity toUserEntity(UserRequest userDTO){
+    public UserEntity toUserEntity(UserRequest userRequest){
         return new UserEntity(
-                userDTO.fullName(),
-                userDTO.gender(),
-                userDTO.phoneNumber(),
-                userDTO.city(),
-                userDTO.birthDate(),
-                userDTO.password()
+                userRequest.email(),
+                userRequest.fullName(),
+                userRequest.gender(),
+                userRequest.city(),
+                userRequest.birthDate(),
+                userRequest.password()
         );
     }
 
@@ -52,7 +52,7 @@ public class UserMapper {
                 userEntity.getId(),
                 userEntity.getFullName(),
                 userEntity.getGender(),
-                userEntity.getPhoneNumber(),
+                userEntity.getEmail(),
                 userEntity.getCity(),
                 userEntity.getBirthDate()
         )).toList();
@@ -70,8 +70,5 @@ public class UserMapper {
 
         );
     }
-
-
-
 
 }
